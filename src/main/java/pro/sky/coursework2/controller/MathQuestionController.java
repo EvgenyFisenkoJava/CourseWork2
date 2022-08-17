@@ -11,26 +11,24 @@ import pro.sky.coursework2.QuestionService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/java")
-public class JavaQuestionController {
+@RequestMapping("/math")
+public class MathQuestionController {
 
     private final QuestionService service;
 
-    public JavaQuestionController(@Qualifier("JavaQuestionService") QuestionService service) {
+    public MathQuestionController(@Qualifier("MathQuestionService") QuestionService service) {
         this.service = service;
     }
 
     @GetMapping("/add")
     public Question addQuestion(@RequestParam("question") String question,
                                 @RequestParam("answer") String answer) {
-
-        return service.add(new Question(question, answer));
+        return service.add(question, answer);
     }
 
     @GetMapping("/remove")
     public Question removeQuestion(@RequestParam("question") String question,
                                    @RequestParam("answer") String answer) {
-
         return service.remove(new Question(question, answer));
     }
 

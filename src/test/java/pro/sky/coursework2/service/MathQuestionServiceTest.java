@@ -5,18 +5,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pro.sky.coursework2.repository.JavaQuestionRepository;
+import pro.sky.coursework2.repository.MathQuestionRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static pro.sky.coursework2.QuestionServiceConstants.*;
 
 @ExtendWith(MockitoExtension.class)
-class JavaQuestionServiceTest {
+class MathQuestionServiceTest {
     @Mock
-    private JavaQuestionRepository javaQuestionRepository;
+    private MathQuestionRepository mathQuestionRepository;
     @InjectMocks
-    private JavaQuestionService questionService;
+    private MathQuestionService questionService;
 
     @Test
     void add() {
@@ -26,20 +26,19 @@ class JavaQuestionServiceTest {
 
     @Test
     void testAdd() {
-        when(javaQuestionRepository.add(question2)).thenReturn(question2);
+        when(mathQuestionRepository.add(question2)).thenReturn(question2);
         assertEquals(question2, questionService.add(question2));
-
     }
 
     @Test
     void remove() {
-        when(javaQuestionRepository.remove(question1)).thenReturn(question1);
+        when(mathQuestionRepository.remove(question1)).thenReturn(question1);
         assertEquals(question1, questionService.remove(question1));
     }
 
     @Test
     void getAll() {
-        when(javaQuestionRepository.getAll()).thenReturn(testServiceJavaAll);
-        assertEquals(testServiceJavaAll, questionService.getAll());
+        when(mathQuestionRepository.getAll()).thenReturn(testServiceAll);
+        assertEquals(testServiceAll, questionService.getAll());
     }
 }
